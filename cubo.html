@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo - Geometria 3D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="cubo">
+    <header class="header-discreto">
+        <span class="site-titulo-mini">Geometria 3D Interativa - Desenvolvido por Professor Jeiverson Christian</span>
+        <a href="https://www.instagram.com/jeiverson_christian/" target="_blank" class="insta-mini">@jeiverson_christian</a>
+    </header>
+
+    <nav class="nav-subpaginas">
+        <a href="index.html">Início</a>
+        <a href="bloco.html">Bloco Retangular</a>
+        <a href="cilindro.html">Cilindro</a>
+    </nav>
+
+    <main class="container-principal">
+        <div class="titulo-figura"><h2>Cubo</h2></div>
+        <div class="conteudo-layout">
+            <div class="area-3d">
+                <div id="canvas-container"></div>
+                <div class="painel-interacao">
+                    <div class="grupo-botoes">
+                        <span style="font-size: 0.7rem; font-weight: bold; color: #4a5568;">Zoom</span>
+                        <div class="linha-btn">
+                            <button id="btn-zoom-in" class="btn-ui">+</button>
+                            <button id="btn-zoom-out" class="btn-ui">-</button>
+                        </div>
+                    </div>
+                    <div class="grupo-botoes">
+                        <span style="font-size: 0.7rem; font-weight: bold; color: #4a5568;">Rotacionar</span>
+                        <div class="linha-btn"><button id="btn-rot-up" class="btn-ui">↑</button></div>
+                        <div class="linha-btn">
+                            <button id="btn-rot-left" class="btn-ui">←</button>
+                            <button id="btn-rot-down" class="btn-ui">↓</button>
+                            <button id="btn-rot-right" class="btn-ui">→</button>
+                        </div>
+                    </div>
+                    <button id="btn-reset-cam" class="btn-ui btn-reset">Resetar</button>
+                </div>
+            </div>
+
+            <div class="area-controles">
+                <h3>Parâmetros</h3>
+                <div class="control-group">
+                    <label>Aresta (a): <span id="val-a">-- cm</span></label>
+                    <input type="range" id="input-a" min="2" max="10" step="0.5">
+                </div>
+
+                <div class="control-group">
+                    <label>Cor Geral das Faces:</label>
+                    <select id="cor-geral">
+                        <option value="#3498db">Azul</option>
+                        <option value="#e74c3c">Vermelho</option>
+                        <option value="#2ecc71">Verde</option>
+                        <option value="#f1c40f">Amarelo</option>
+                        <option value="#9b59b6">Roxo</option>
+                        <option value="#e67e22">Laranja</option>
+                        <option value="transparente">Transparente</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Cores por Face (Sobrepõe a Geral):</label>
+                    <div class="grid-faces">
+                        <div>Frente (+Z): <select id="face-4" class="sel-face"><option value="padrao">Padrão</option><option value="#e74c3c">Vermelho</option><option value="#3498db">Azul</option><option value="#2ecc71">Verde</option><option value="#f1c40f">Amarelo</option><option value="transparente">Transp.</option></select></div>
+                        <div>Trás (-Z): <select id="face-5" class="sel-face"><option value="padrao">Padrão</option><option value="#e74c3c">Vermelho</option><option value="#3498db">Azul</option><option value="#2ecc71">Verde</option><option value="#f1c40f">Amarelo</option><option value="transparente">Transp.</option></select></div>
+                        <div>Cima (+Y): <select id="face-2" class="sel-face"><option value="padrao">Padrão</option><option value="#e74c3c">Vermelho</option><option value="#3498db">Azul</option><option value="#2ecc71">Verde</option><option value="#f1c40f">Amarelo</option><option value="transparente">Transp.</option></select></div>
+                        <div>Baixo (-Y): <select id="face-3" class="sel-face"><option value="padrao">Padrão</option><option value="#e74c3c">Vermelho</option><option value="#3498db">Azul</option><option value="#2ecc71">Verde</option><option value="#f1c40f">Amarelo</option><option value="transparente">Transp.</option></select></div>
+                        <div>Direita (+X): <select id="face-0" class="sel-face"><option value="padrao">Padrão</option><option value="#e74c3c">Vermelho</option><option value="#3498db">Azul</option><option value="#2ecc71">Verde</option><option value="#f1c40f">Amarelo</option><option value="transparente">Transp.</option></select></div>
+                        <div>Esquerda (-X): <select id="face-1" class="sel-face"><option value="padrao">Padrão</option><option value="#e74c3c">Vermelho</option><option value="#3498db">Azul</option><option value="#2ecc71">Verde</option><option value="#f1c40f">Amarelo</option><option value="transparente">Transp.</option></select></div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Tamanho dos Vértices: <span id="val-vert">0.3</span></label>
+                    <input type="range" id="tamanho-vertices" min="0.1" max="1.5" step="0.1" value="0.3">
+                    <select id="cor-vertices" style="margin-top:5px;">
+                        <option value="#000000">Pretos</option>
+                        <option value="#ffffff">Brancos</option>
+                        <option value="#e74c3c">Vermelhos</option>
+                        <option value="nao">Esconder Vértices</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Textos na Figura (C, L, H):</label>
+                    <select id="ver-medidas">
+                        <option value="mostrar">Mostrar Letras e Contornos</option>
+                        <option value="esconder">Esconder Tudo</option>
+                    </select>
+                    <div id="info-medidas-texto" class="texto-medida-figura"></div>
+                </div>
+
+                <h3>Cálculos</h3>
+                <div class="calculos-box">
+                    <p id="calc-area">Aguardando...</p>
+                    <p id="calc-volume">Aguardando...</p>
+                </div>
+                
+                <div class="legenda">
+                    <p><strong>Legenda:</strong><br>
+                    C = Comprimento | L = Largura | H = Altura<br>
+                    a = valor da aresta<br>
+                    A<sub>b</sub> = Área da Base | V = Volume</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

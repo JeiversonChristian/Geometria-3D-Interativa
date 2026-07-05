@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cilindro - Geometria 3D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="cilindro">
+    <header class="header-discreto">
+        <span class="site-titulo-mini">Geometria 3D Interativa - Desenvolvido por Professor Jeiverson Christian</span>
+        <a href="https://www.instagram.com/jeiverson_christian/" target="_blank" class="insta-mini">@jeiverson_christian</a>
+    </header>
+
+    <nav class="nav-subpaginas">
+        <a href="index.html">Início</a>
+        <a href="cubo.html">Cubo</a>
+        <a href="bloco.html">Bloco Retangular</a>
+    </nav>
+
+    <main class="container-principal">
+        <div class="titulo-figura"><h2>Cilindro</h2></div>
+        <div class="conteudo-layout">
+            <div class="area-3d">
+                <div id="canvas-container"></div>
+                <div class="painel-interacao">
+                    <div class="grupo-botoes">
+                        <span style="font-size: 0.7rem; font-weight: bold; color: #4a5568;">Zoom</span>
+                        <div class="linha-btn"><button id="btn-zoom-in" class="btn-ui">+</button><button id="btn-zoom-out" class="btn-ui">-</button></div>
+                    </div>
+                    <div class="grupo-botoes">
+                        <span style="font-size: 0.7rem; font-weight: bold; color: #4a5568;">Rotacionar</span>
+                        <div class="linha-btn"><button id="btn-rot-up" class="btn-ui">↑</button></div>
+                        <div class="linha-btn"><button id="btn-rot-left" class="btn-ui">←</button><button id="btn-rot-down" class="btn-ui">↓</button><button id="btn-rot-right" class="btn-ui">→</button></div>
+                    </div>
+                    <button id="btn-reset-cam" class="btn-ui btn-reset">Resetar</button>
+                </div>
+            </div>
+
+            <div class="area-controles">
+                <h3>Parâmetros</h3>
+                <div class="control-group">
+                    <label>Raio (R): <span id="val-r">-- cm</span></label>
+                    <input type="range" id="input-r" min="1" max="6" step="0.5">
+                </div>
+                <div class="control-group">
+                    <label>Altura (H): <span id="val-h">-- cm</span></label>
+                    <input type="range" id="input-h" min="2" max="12" step="0.5">
+                </div>
+                
+                <div class="control-group">
+                    <label>Cor Geral da Figura:</label>
+                    <select id="cor-geral">
+                        <option value="#f1c40f">Amarelo</option>
+                        <option value="#3498db">Azul</option>
+                        <option value="#e74c3c">Vermelho</option>
+                        <option value="#2ecc71">Verde</option>
+                        <option value="transparente">Transparente</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Valor de π (Pi):</label>
+                    <select id="select-pi">
+                        <option value="simbolo">Símbolo (π)</option>
+                        <option value="3">3</option>
+                        <option value="3.14">3.14</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Exibição de Elementos:</label>
+                    <select id="ver-elementos">
+                        <option value="tudo-preto">Contorno completo</option>
+                        <option value="apenas-base">Ocultar Malha Externa</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Textos na Figura (R, H):</label>
+                    <select id="ver-medidas">
+                        <option value="mostrar">Mostrar R e H</option>
+                        <option value="esconder">Esconder Textos</option>
+                    </select>
+                    <div id="info-medidas-texto" class="texto-medida-figura"></div>
+                </div>
+
+                <h3>Cálculos</h3>
+                <div class="calculos-box">
+                    <p id="calc-area">Aguardando...</p>
+                    <p id="calc-volume">Aguardando...</p>
+                </div>
+                
+                <div class="legenda">
+                    <p><strong>Legenda:</strong><br>
+                    R = Raio da Base | H = Altura<br>
+                    A<sub>b</sub> = Área da Base | V = Volume</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+:root {
+    --bg-fundo: #f8f9fa;
+    --texto-principal: #2d3748;
+    --cor-azul: #3498db;
+    --borda: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+body { background-color: var(--bg-fundo); color: var(--texto-principal); }
+
+/* HOME PAGE */
+#home { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+#home h1 { font-size: 3rem; color: #1a202c; margin-bottom: 5px; }
+.subtitle { color: var(--cor-azul); margin-bottom: 40px; font-weight: 500; }
+.menu-cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+.card { display: block; background: white; padding: 20px 40px; border-radius: 8px; text-decoration: none; color: var(--texto-principal); font-weight: bold; border: 2px solid var(--borda); transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.card:hover { border-color: var(--cor-azul); transform: translateY(-3px); }
+.instagram-link { color: #a0aec0; text-decoration: none; font-size: 0.9rem; }
+.instagram-link:hover { color: #e1306c; }
+
+/* CABEÇALHO DISCRETO NAS SUBPÁGINAS */
+.header-discreto { background: #edf2f7; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borda); }
+.site-titulo-mini { font-size: 0.75rem; color: #718096; letter-spacing: 0.5px; }
+.insta-mini { font-size: 0.75rem; color: #718096; text-decoration: none; }
+.insta-mini:hover { color: #e1306c; }
+
+/* SUB-NAVEGAÇÃO */
+.nav-subpaginas { display: flex; justify-content: center; gap: 15px; padding: 10px; background: white; border-bottom: 1px solid var(--borda); }
+.nav-subpaginas a { text-decoration: none; color: var(--texto-principal); font-size: 0.9rem; padding: 5px 12px; border-radius: 4px; background: #f7fafc; border: 1px solid var(--borda); }
+.nav-subpaginas a:hover { background: var(--cor-azul); color: white; }
+
+/* LAYOUT DO CONTEÚDO 3D */
+.container-principal { max-width: 1300px; margin: 20px auto; padding: 0 20px; }
+.titulo-figura h2 { margin-bottom: 15px; font-size: 1.8rem; color: #1a202c; text-align: center; }
+.conteudo-layout { display: grid; grid-template-columns: 2fr 1.2fr; gap: 20px; }
+
+.area-3d { position: relative; background: #ffffff; border-radius: 8px; border: 1px solid var(--borda); height: 75vh; min-height: 500px; overflow: hidden; }
+#canvas-container { width: 100%; height: 100%; position: relative; }
+
+/* RÓTULOS 3D */
+.label-3d { color: #e74c3c; font-family: monospace; font-weight: bold; font-size: 18px; background: rgba(255,255,255,0.8); padding: 2px 6px; border-radius: 4px; border: 1px solid #e74c3c; pointer-events: none; }
+
+/* CONTROLES DA CÂMERA E ROTAÇÃO */
+.painel-interacao { position: absolute; bottom: 15px; left: 15px; display: flex; gap: 15px; z-index: 10; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 8px; border: 1px solid var(--borda); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.grupo-botoes { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.grupo-botoes .linha-btn { display: flex; gap: 5px; }
+.btn-ui { background: #2d3748; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; font-weight: bold; min-width: 35px; text-align: center; }
+.btn-ui:hover { background: var(--cor-azul); }
+.btn-reset { height: 100%; display: flex; align-items: center; padding: 0 15px; }
+
+/* ÁREA DE CONTROLES LATERAIS */
+.area-controles { background: white; padding: 20px; border-radius: 8px; border: 1px solid var(--borda); display: flex; flex-direction: column; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); overflow-y: auto; max-height: 75vh; }
+.control-group { display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; border-bottom: 1px dashed var(--borda); }
+.control-group label { font-size: 0.9rem; font-weight: 600; color: #4a5568; display: flex; justify-content: space-between; }
+.control-group input[type="range"] { width: 100%; cursor: pointer; }
+.control-group select { padding: 6px; border-radius: 4px; border: 1px solid var(--borda); background: #f7fafc; }
+
+/* PAINEL DE CORES INDIVIDUAIS */
+.grid-faces { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: #f7fafc; padding: 10px; border-radius: 6px; border: 1px solid #e2e8f0; }
+.grid-faces div { display: flex; flex-direction: column; font-size: 0.8rem; }
+.grid-faces select { padding: 2px; font-size: 0.8rem; }
+
+.texto-medida-figura { font-family: monospace; font-size: 0.95rem; margin-top: 5px; color: #4a5568; background: #f7fafc; padding: 6px; border-radius: 4px; text-align: center; font-weight: bold; }
+
+.calculos-box { background: #ebf8ff; padding: 15px; border-left: 4px solid var(--cor-azul); border-radius: 4px; font-family: monospace; font-size: 1.05rem; line-height: 1.6; }
+.legenda { font-size: 0.8rem; color: #718096; background: #f7fafc; padding: 10px; border-radius: 4px; border: 1px solid var(--borda); line-height: 1.4; }
+
+@media (max-width: 850px) {
+    .conteudo-layout { grid-template-columns: 1fr; }
+    .area-3d { height: 50vh; min-height: 350px; }
+    .painel-interacao { transform: scale(0.85); bottom: 5px; left: 5px; }
+    #home h1 { font-size: 2.2rem; }
+}
